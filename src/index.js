@@ -24,10 +24,12 @@ class PuppeteerManager {
   constructor({
     puppeteerOptions = defaultPuppeteerOptions,
     pageLimit = 4,
+    timeout = 30000, // 30s
   } = {}) {
     this.puppeteerOptions = puppeteerOptions
     this._browser = null
     this.timeoutId = null
+    this.timeout = timeout
 
     // limit the number of open tabs
     this.newPageSemaphore = new Semaphore(pageLimit)
@@ -50,7 +52,7 @@ class PuppeteerManager {
    */
   tap() {
     clearTimeout(this.timeoutId)
-    this.timeoutId = setTimeout(this.closeBrowser.bind(this), 10000)
+    this.timeoutId = setTimeout(this.closeBrowser.bind(this), this.timeout)
   }
 
   async closeBrowser() {
