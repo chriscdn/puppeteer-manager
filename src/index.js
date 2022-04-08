@@ -82,7 +82,6 @@ class PuppeteerManager {
     try {
       // limit the number of open tabs
       await this.newPageSemaphore.acquire()
-      console.log(this.newPageSemaphore.count())
 
       // prevents a closeBrowser() call from destroying this while doing async stuff
       // like calling browser() or newPage()
