@@ -1,10 +1,6 @@
 const puppeteer = require('puppeteer')
 const Semaphore = require('@chriscdn/promise-semaphore')
 
-// Handles the extremely rare case when a new browser or page is being requested at the exact
-// moment a cleanup call is being made.
-const openCloseSemaphore = new Semaphore()
-
 // https://github.com/GoogleChrome/puppeteer/issues/661
 // for --font-render-hinting=none - seems to fix inconsistent letter spacing between linux and everything else
 // pipe : // https://github.com/GoogleChrome/puppeteer/issues/2735
@@ -33,6 +29,10 @@ class PuppeteerManager {
 
     // limit the number of open tabs
     this.newPageSemaphore = new Semaphore(pageLimit)
+
+    // Handles the extremely rare case when a new browser or page is being requested at the exact
+    // moment a cleanup call is being made.
+    this.openCloseSemaphore = new Semaphore()
   }
 
   // Never call this externally.
@@ -57,7 +57,7 @@ class PuppeteerManager {
 
   async closeBrowser() {
     try {
-      await openCloseSemaphore.acquire()
+      await this.openCloseSemaphore.acquire()
 
       // Puppeteer starts with 1 blank tab open.
       if (this.isBrowserOpen && (await this.pageCount()) <= 1) {
@@ -70,7 +70,7 @@ class PuppeteerManager {
         this.tap()
       }
     } finally {
-      openCloseSemaphore.release()
+      this.openCloseSemaphore.release()
     }
   }
 
@@ -82,17 +82,20 @@ class PuppeteerManager {
     try {
       // limit the number of open tabs
       await this.newPageSemaphore.acquire()
+      console.log(this.newPageSemaphore.count())
 
       // prevents a closeBrowser() call from destroying this while doing async stuff
       // like calling browser() or newPage()
-      await openCloseSemaphore.acquire()
+      await this.openCloseSemaphore.acquire()
       const browser = await this.browser()
       const page = await browser.newPage()
 
+      page.on('close', () => this.newPageSemaphore.release())
+
       return page
     } finally {
-      openCloseSemaphore.release()
-      this.newPageSemaphore.release()
+      this.openCloseSemaphore.release()
+      // this.newPageSemaphore.release()
     }
   }
 
