@@ -1,6 +1,6 @@
 # @chriscdn/puppeteer-manager
 
-This package manages the lifecycle of a Puppeteer instance, and automatically shuts it down or restarts it when necessary.
+This package manages the lifecycle of a Puppeteer instance, and automatically starts and stops it when necessary.
 
 This lets a developer focus on creating, using, and destroying pages without having to manage the instance. Page creation can also be limited, which prevents opening too many tabs at once. Requests to open additional pages are queued.
 
@@ -12,8 +12,10 @@ Construct an instance:
 const PuppeteerManager = require('@chriscdn/puppeteer-manager')
 
 const puppeteerManager = new PuppeteerManager({
-    puppeteerOptions: {/* These options are passed to the Puppeteer constructor */}
-    pageLimit: 4
+  puppeteerOptions: {
+    /* These options are passed to the Puppeteer constructor */
+  },
+  pageLimit: 4,
 })
 ```
 

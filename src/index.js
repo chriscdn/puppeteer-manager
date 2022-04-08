@@ -104,15 +104,17 @@ class PuppeteerManager {
   }
 }
 
-const puppeteerManager = new PuppeteerManager()
+module.exports = PuppeteerManager
 
-;(async () => {
-  const freeze = async (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+// const puppeteerManager = new PuppeteerManager()
 
-  const page = await puppeteerManager.newPage()
-  const page2 = await puppeteerManager.newPage()
+// ;(async () => {
+//   const freeze = async (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
-  freeze(1000).then(() => page.close())
-  freeze(10000).then(() => page2.close())
-  //   console.log(browser)
-})()
+//   const page = await puppeteerManager.newPage()
+//   const page2 = await puppeteerManager.newPage()
+
+//   freeze(1000).then(() => page.close())
+//   freeze(10000).then(() => page2.close())
+//   //   console.log(browser)
+// })()
