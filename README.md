@@ -19,7 +19,7 @@ const puppeteerManager = new PuppeteerManager({
 })
 ```
 
-Then use it:
+Then use it, as follows. You must call `page.close()` when done with the page.
 
 ```js
 // if `pageLimit` pages are already open, then wait until a new slot becomes available
