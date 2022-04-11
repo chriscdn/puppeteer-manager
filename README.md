@@ -2,7 +2,7 @@
 
 This package manages the lifecycle of a Puppeteer instance, and automatically starts and stops it when necessary.
 
-This lets a developer focus on creating, using, and destroying pages without having to manage the instance. Page creation can also be limited, which prevents opening too many tabs at once. Requests to open additional pages are queued.
+This lets a developer focus on creating, using, and destroying pages without having to manage the instance. The number of open pages can be limited, which prevents having too many open tabs at once. Additional requests to open pages are queued.
 
 ## Usage
 
@@ -19,7 +19,7 @@ const puppeteerManager = new PuppeteerManager({
 })
 ```
 
-Then use it, as follows. You must call `page.close()` when done with the page.
+Then use it. You must call `page.close()` after being done with the page.
 
 ```js
 // if `pageLimit` pages are already open, then wait until a new slot becomes available
