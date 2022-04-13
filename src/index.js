@@ -36,7 +36,7 @@ class PuppeteerManager {
   }
 
   // Never call this externally.
-  async browser() {
+  async #browser() {
     if (this._browser == null) {
       console.log('Puppeteer Started')
       this._browser = await puppeteer.launch(this.puppeteerOptions)
@@ -86,7 +86,7 @@ class PuppeteerManager {
       // prevents a closeBrowser() call from destroying this while doing async stuff
       // like calling browser() or newPage()
       await this.openCloseSemaphore.acquire()
-      const browser = await this.browser()
+      const browser = await this.#browser()
       const page = await browser.newPage()
 
       page.on('close', () => this.newPageSemaphore.release())
