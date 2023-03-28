@@ -1,13 +1,17 @@
 {
   "name": "@chriscdn/puppeteer-manager",
-  "version": "1.0.0",
-  "main": "src/index.js",
+  "version": "2.0.0",
+  "main": "dist/index.js",
   "license": "MIT",
+  "scripts": {
+    "build": "rm -rf ./lib/ && tsc"
+  },
   "dependencies": {
-    "@chriscdn/promise-semaphore": "^1.0.9",
-    "puppeteer": "^13.5.2"
+    "@chriscdn/promise-semaphore": "^2.0.1",
+    "puppeteer": "^19.8.0"
   },
   "devDependencies": {
-    "eslint": "^8.13.0"
+    "@tsconfig/node16": "^1.0.3",
+    "typescript": "^5.0.2"
   }
 }
