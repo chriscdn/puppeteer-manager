@@ -1,5 +1,5 @@
 /// <reference types="node" />
-import { Browser, PuppeteerLaunchOptions } from 'puppeteer';
+import puppeteer, { Browser, PuppeteerLaunchOptions } from 'puppeteer';
 import Semaphore from '@chriscdn/promise-semaphore';
 declare class PuppeteerManager {
     puppeteerOptions: PuppeteerLaunchOptions;
@@ -20,7 +20,7 @@ declare class PuppeteerManager {
     tap(): void;
     closeBrowser(): Promise<void>;
     get isBrowserOpen(): boolean;
-    newPage(): Promise<import("puppeteer").Page>;
+    newPage(): Promise<puppeteer.Page>;
     pageCount(): Promise<number>;
 }
 export default PuppeteerManager;

@@ -4,6 +4,10 @@ This package manages the lifecycle of a Puppeteer instance, and automatically st
 
 This lets a developer focus on creating, using, and destroying pages without having to manage the instance. The number of open pages can be limited, which prevents having too many open tabs at once. Additional requests to open pages are queued.
 
+## Note
+
+The version of Puppeteer is pinned at 19.1 due to [this bug](https://github.com/puppeteer/puppeteer/issues/9408), which seemed to be introduced in 19.2, In short, pages with overflowing content would get rendered at the wrong size.
+
 ## Usage
 
 Construct an instance:
