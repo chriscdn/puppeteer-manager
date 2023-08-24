@@ -1,6 +1,6 @@
 {
   "name": "@chriscdn/puppeteer-manager",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "main": "lib/index.js",
   "license": "MIT",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@chriscdn/promise-semaphore": "^2.0.1",
-    "puppeteer": "21.1.0"
+    "puppeteer": "19.1"
   },
   "devDependencies": {
     "@tsconfig/node16": "^16.1.0",
