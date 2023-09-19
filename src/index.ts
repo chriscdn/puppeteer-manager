@@ -1,5 +1,8 @@
-import puppeteer, { Browser, PuppeteerLaunchOptions } from "puppeteer";
-import Semaphore from "@chriscdn/promise-semaphore";
+import puppeteer, {
+  type Browser,
+  type PuppeteerLaunchOptions,
+} from "puppeteer";
+import { default as Semaphore } from "@chriscdn/promise-semaphore";
 
 // https://github.com/GoogleChrome/puppeteer/issues/661
 // for --font-render-hinting=none - seems to fix inconsistent letter spacing between linux and everything else

@@ -1,6 +1,6 @@
 /// <reference types="node" />
-import puppeteer, { Browser, PuppeteerLaunchOptions } from "puppeteer";
-import Semaphore from "@chriscdn/promise-semaphore";
+import puppeteer, { type Browser, type PuppeteerLaunchOptions } from "puppeteer";
+import { default as Semaphore } from "@chriscdn/promise-semaphore";
 declare class PuppeteerManager {
     puppeteerOptions: PuppeteerLaunchOptions;
     _browser: Browser | null;

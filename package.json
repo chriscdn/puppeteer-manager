@@ -1,17 +1,25 @@
 {
   "name": "@chriscdn/puppeteer-manager",
-  "version": "2.0.2",
-  "main": "lib/index.js",
+  "version": "2.0.3",
   "license": "MIT",
+  "type": "module",
+  "source": "./src/index.ts",
+  "main": "./lib/puppeteer-manager.cjs",
+  "module": "./lib/puppeteer-manager.module.js",
+  "exports": {
+    "require": "./lib/puppeteer-manager.cjs",
+    "default": "./lib/puppeteer-manager.modern.js"
+  },
+  "types": "./lib/index.d.ts",
   "scripts": {
-    "build": "rm -rf ./lib/ && tsc"
+    "build": "rm -rf ./lib/ && microbundle --format es,cjs",
+    "dev": "microbundle watch --format es,cjs"
   },
   "dependencies": {
-    "@chriscdn/promise-semaphore": "^2.0.1",
+    "@chriscdn/promise-semaphore": "^2.0.7",
     "puppeteer": "19.1"
   },
   "devDependencies": {
-    "@tsconfig/node16": "^16.1.0",
-    "typescript": "^5.1.6"
+    "microbundle": "^0.15.1"
   }
 }
