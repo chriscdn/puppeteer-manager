@@ -13,7 +13,7 @@
   },
   "types": "./lib/index.d.ts",
   "scripts": {
-    "build": "rm -rf ./lib/ && microbundle --format es,cjs",
+    "build": "rm -rf ./lib/ && microbundle --format es,cjs,modern",
     "dev": "microbundle watch --format es,cjs"
   },
   "dependencies": {
