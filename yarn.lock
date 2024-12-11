@@ -1018,10 +1018,10 @@
     "@babel/helper-validator-identifier" "^7.22.19"
     to-fast-properties "^2.0.0"
 
-"@chriscdn/promise-semaphore@^2.0.7":
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/@chriscdn/promise-semaphore/-/promise-semaphore-2.0.7.tgz#fc859ea25c523022c808393ab2efb847e430ad16"
-  integrity sha512-xsa5SAYSBnYjqvGnzmaLca4X/RFeOl+ziCsIHl5iHkFBgE4NgWupB4z3A1rVMBM2I8TEKaah+5iu9Cm7gQu9JQ==
+"@chriscdn/promise-semaphore@^2.0.9":
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/@chriscdn/promise-semaphore/-/promise-semaphore-2.0.9.tgz#dfb211c1b81711e59e031d3754463d0c6637a121"
+  integrity sha512-kKXJcm5gM8FN8O8U20H19/85b8R33K0Q2u5cnm9mfblK/7QcNChlOhCTWgnrr8wYiuF1ZbYIZcioxW79QfjnmQ==
 
 "@jridgewell/gen-mapping@^0.3.0", "@jridgewell/gen-mapping@^0.3.2":
   version "0.3.3"

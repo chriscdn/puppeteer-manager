@@ -2,7 +2,7 @@ import puppeteer, {
   type Browser,
   type PuppeteerLaunchOptions,
 } from "puppeteer";
-import { default as Semaphore } from "@chriscdn/promise-semaphore";
+import Semaphore from "@chriscdn/promise-semaphore";
 
 // https://github.com/GoogleChrome/puppeteer/issues/661
 // for --font-render-hinting=none - seems to fix inconsistent letter spacing between linux and everything else
@@ -69,6 +69,11 @@ class PuppeteerManager {
     this.timeoutId = setTimeout(this.closeBrowser.bind(this), this.timeout);
   }
 
+  /**
+   * May need to revisit this. Are there cases when the browser refused to close?
+   *
+   * https://www.codepasta.com/2024/04/19/optimizing-puppeteer-pdf-generation
+   */
   async closeBrowser() {
     try {
       await this.openCloseSemaphore.acquire();
@@ -77,7 +82,7 @@ class PuppeteerManager {
       if (this.isBrowserOpen && (await this.pageCount()) <= 1) {
         const browser = this._browser;
         this._browser = null;
-        await browser!.close();
+        await browser.close();
         console.log("Puppeteer Closed");
       } else {
         // console.log('Not ready to close.')
