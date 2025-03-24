@@ -2,6 +2,7 @@ import puppeteer, {
   type Browser,
   type PuppeteerLaunchOptions,
 } from "puppeteer";
+
 import Semaphore from "@chriscdn/promise-semaphore";
 
 // https://github.com/GoogleChrome/puppeteer/issues/661
@@ -127,4 +128,6 @@ class PuppeteerManager {
   }
 }
 
-export default PuppeteerManager;
+export { PuppeteerManager };
+
+export * from "puppeteer";

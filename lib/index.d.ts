@@ -28,4 +28,5 @@ declare class PuppeteerManager {
     newPage(): Promise<puppeteer.Page>;
     pageCount(): Promise<number>;
 }
-export default PuppeteerManager;
+export { PuppeteerManager };
+export * from "puppeteer";
