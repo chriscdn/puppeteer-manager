@@ -128,6 +128,6 @@ class PuppeteerManager {
   }
 }
 
-export { PuppeteerManager };
+export { puppeteer, PuppeteerManager };
 
-export * from "puppeteer";
+// export * from "puppeteer";
