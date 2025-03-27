@@ -130,4 +130,4 @@ class PuppeteerManager {
 
 export { puppeteer, PuppeteerManager };
 
-// export * from "puppeteer";
+export * from "puppeteer";

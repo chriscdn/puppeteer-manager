@@ -29,3 +29,4 @@ declare class PuppeteerManager {
     pageCount(): Promise<number>;
 }
 export { puppeteer, PuppeteerManager };
+export * from "puppeteer";
