@@ -1,14 +1,11 @@
-import puppeteer, {
-  type Browser,
-  type PuppeteerLaunchOptions,
-} from "puppeteer";
+import puppeteer, { type Browser, type LaunchOptions } from "puppeteer";
 
-import Semaphore from "@chriscdn/promise-semaphore";
+import { Semaphore } from "@chriscdn/promise-semaphore";
 
 // https://github.com/GoogleChrome/puppeteer/issues/661
 // for --font-render-hinting=none - seems to fix inconsistent letter spacing between linux and everything else
 // pipe : // https://github.com/GoogleChrome/puppeteer/issues/2735
-const defaultPuppeteerOptions: PuppeteerLaunchOptions = {
+const defaultPuppeteerOptions: LaunchOptions = {
   pipe: true,
   args: [
     "--no-sandbox",
@@ -17,11 +14,11 @@ const defaultPuppeteerOptions: PuppeteerLaunchOptions = {
     "--font-render-hinting=none",
   ],
   dumpio: true,
-  ignoreHTTPSErrors: true,
+  acceptInsecureCerts: true,
 };
 
 class PuppeteerManager {
-  puppeteerOptions: PuppeteerLaunchOptions;
+  puppeteerOptions: LaunchOptions;
   _browser: Browser | null;
   timeoutId: NodeJS.Timeout | undefined;
   timeout: number;
@@ -33,7 +30,7 @@ class PuppeteerManager {
     pageLimit = 4,
     timeout = 30000, // 30s
   }: {
-    puppeteerOptions?: PuppeteerLaunchOptions;
+    puppeteerOptions?: LaunchOptions;
     pageLimit?: number;
     timeout?: number;
   } = {}) {

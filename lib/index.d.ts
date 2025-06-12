@@ -1,15 +1,15 @@
 /// <reference types="node" />
-import puppeteer, { type Browser, type PuppeteerLaunchOptions } from "puppeteer";
-import Semaphore from "@chriscdn/promise-semaphore";
+import puppeteer, { type Browser, type LaunchOptions } from "puppeteer";
+import { Semaphore } from "@chriscdn/promise-semaphore";
 declare class PuppeteerManager {
-    puppeteerOptions: PuppeteerLaunchOptions;
+    puppeteerOptions: LaunchOptions;
     _browser: Browser | null;
     timeoutId: NodeJS.Timeout | undefined;
     timeout: number;
     newPageSemaphore: Semaphore;
     openCloseSemaphore: Semaphore;
     constructor({ puppeteerOptions, pageLimit, timeout, }?: {
-        puppeteerOptions?: PuppeteerLaunchOptions;
+        puppeteerOptions?: LaunchOptions;
         pageLimit?: number;
         timeout?: number;
     });
@@ -25,7 +25,7 @@ declare class PuppeteerManager {
      */
     closeBrowser(): Promise<void>;
     get isBrowserOpen(): boolean;
-    newPage(): Promise<puppeteer.Page>;
+    newPage(): Promise<import("puppeteer").Page>;
     pageCount(): Promise<number>;
 }
 export { puppeteer, PuppeteerManager };

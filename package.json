@@ -1,6 +1,6 @@
 {
   "name": "@chriscdn/puppeteer-manager",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "license": "MIT",
   "type": "module",
   "source": "./src/index.ts",
@@ -17,8 +17,8 @@
     "dev": "microbundle watch --format es,cjs"
   },
   "dependencies": {
-    "@chriscdn/promise-semaphore": "^2.0.10",
-    "puppeteer": "19.1"
+    "@chriscdn/promise-semaphore": "^3.0.1",
+    "puppeteer": "24.10.1"
   },
   "devDependencies": {
     "microbundle": "^0.15.1"
